@@ -24,8 +24,10 @@ function CartContextReducer(state,action){
         const existingItemIndex=state.items.findIndex((item)=>{
             return item.id===action.id;
         })
+       
         const existingCartItem=state.items[existingItemIndex];
         const updatedItems=[...state.items];
+       
         if(existingCartItem.quantity===1){
             updatedItems.splice(existingItemIndex,1)
         } 

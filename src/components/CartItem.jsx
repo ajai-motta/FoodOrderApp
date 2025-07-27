@@ -1,6 +1,6 @@
 import { formmater } from "../utils/formmater";
 
-export default function CartItem({ name,quantity,price,removeItem,addItem }) {
+export default function CartItem({ id,name,quantity,price,removeItem,addItem }) {
 return <li className="cart-item">
         
     <p>  

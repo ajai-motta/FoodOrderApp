@@ -14,24 +14,25 @@ export default function Cart(){
     function handleCloseCart(){
         userContext.hideCart();
     }
-    return <Modal className="cart" open={userContext.progress==='cart'}>
+    return <Modal className="cart" open={userContext.progress==='cart'} onClose={userContext.progress==='cart'?handleCloseCart:null}>
         <h2>Your Cart</h2>
         
         <ul>
             {cartCtx.items.map((item)=>{
-                return <CartItem key={item.key}
+                return <CartItem key={item.id}
                  name={item.name} 
+                 id={item.id}
                  quantity={item.quantity} 
                  price={item.price}
-                 removeItem={cartCtx.removeItem}
-                 addItem={cartCtx.addItem}
+                 removeItem={()=>cartCtx.removeItem(item.id)}
+                 addItem={()=>cartCtx.addItem(item)}
                  />
             })}
         </ul>
         <p className="cart-total">{formmater.format(cartTotal)}</p>
         <p className="model-actions">
             <Button onText isCart={false} onClick={handleCloseCart}>Close</Button>
-            <Button isCart={false}>Procceed To CheckOut</Button>
+            {cartCtx.items.length >0 && <Button isCart={false} onClick={()=>userContext.showCheckout()}>Procceed To CheckOut</Button>}
         </p>
     </Modal>
 }
