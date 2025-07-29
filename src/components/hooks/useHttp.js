@@ -22,6 +22,9 @@ export default function useHttp(url,config,initalData){
     const [data,setData]=useState(initalData);
     const [error,setError]=useState();
     const [isLoading,setIsLoading]=useState(false);
+    function clearData(){
+        setData(initalData);
+    }
 const sendRequest=useCallback(async function sendRequest(data){
     setIsLoading(true)
     try{
@@ -52,6 +55,6 @@ useEffect(()=>{
 
 },[sendRequest,config]);
 return {
-    data,error,isLoading,sendRequest
+    data,error,isLoading,sendRequest,clearData
 }
 }
