@@ -6,7 +6,7 @@ import express from 'express';
 const app = express();
 
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static('public'));app.use(express.json());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -21,6 +21,7 @@ app.get('/meals', async (req, res) => {
 });
 
 app.post('/orders', async (req, res) => {
+  console.log(req.body)
   const orderData = req.body.order;
 
   if (orderData === null || orderData.items === null || orderData.items.length === 0) {
