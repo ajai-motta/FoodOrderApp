@@ -15,7 +15,7 @@ export default function Header(){
     return <header id="main-header"className="header">
        <div id="title">
          <img src={Logoimg}/>
-         <h1></h1>
+         <h1>Order Food</h1>
        </div>
        <nav>
         <Button onClick={handleShowCart}>Cart{totalNumberOfItems}</Button>
